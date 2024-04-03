@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import { v4 as uuidv4 } from "uuid";
 import Cookies from "js-cookie";
 import { ThreeDots } from "react-loader-spinner";
+import ProductItem from "./ProductItem";
 
 const orderByCriteria = [
   {
@@ -111,20 +112,8 @@ const Products = () => {
           renderLoader()
         ) : (
           <ul className="grid grid-cols-2 md:grid-cols-3 mt-[30px]">
-            {products.map(({ id, productName, imageUrl, price }) => {
-              return (
-                <li key={id} className="mr-[10px] w-[90%] mx-auto mb-[20px]">
-                  <img
-                    src={imageUrl}
-                    alt={productName}
-                    className="w-full h-[200px]"
-                  />
-                  <div className="flex justify-between">
-                    <p className="text-[20px] capitalize">{productName}</p>
-                    <p>{price}/-</p>
-                  </div>
-                </li>
-              );
+            {products.map((each) => {
+              return <ProductItem key={each.id} productDetails={each} />;
             })}
           </ul>
         )}
