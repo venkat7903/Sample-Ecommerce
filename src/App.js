@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch, Redirect } from "react-router-dom";
+
+import "./App.css";
+import Home from "./components/home";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import NotFound from "./components/NotFound";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRegister from "./components/Register/AdminRegister";
+import UserRegister from "./components/Register/UserRegister";
+import AdminLogin from "./components/Login/AdminLogin";
+import UserLogin from "./components/Login/UserLogin";
+import Products from "./components/Products";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/register" component={Register} />
+      <Route exact path="/admin/register" component={AdminRegister} />
+      <Route exact path="/user/register" component={UserRegister} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/admin/login" component={AdminLogin} />
+      <Route exact path="/user/login" component={UserLogin} />
+      <ProtectedRoute exact path="/" component={Home} />
+      <ProtectedRoute exact path="/products" component={Products} />
+      <ProtectedRoute exact path="/cart" />
+      <Route exact path="/not-found" component={NotFound} />
+      <Redirect to="/not-found" />
+    </Switch>
   );
 }
 
