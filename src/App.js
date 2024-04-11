@@ -11,6 +11,7 @@ import UserRegister from "./components/Register/UserRegister";
 import AdminLogin from "./components/Login/AdminLogin";
 import UserLogin from "./components/Login/UserLogin";
 import Products from "./components/Products";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
       <Route exact path="/user/login" component={UserLogin} />
       <ProtectedRoute exact path="/" component={Home} />
       <ProtectedRoute exact path="/products" component={Products} />
-      <ProtectedRoute exact path="/cart" />
+      <ProtectedRoute exact path="/cart" component={Cart} />
       <Route exact path="/not-found" component={NotFound} />
       <Redirect to="/not-found" />
     </Switch>
