@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
@@ -5,6 +6,28 @@ const ProductItem = (props) => {
   const { productDetails } = props;
   const { id, productName, imageUrl, price } = productDetails;
   const [quantity, setQuantity] = useState(1);
+
+  const addProductToCart = async () => {
+    const jwtToken = Cookies.get("jwt_token");
+    const url = "https://sample-api-jv77.onrender.com/cart";
+    const productData = {
+      productId: id,
+      productName,
+      quantity,
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${jwtToken}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(productData),
+    };
+
+    const resposne = await fetch(url, options);
+    const data = await resposne.json();
+    console.log(data);
+  };
 
   return (
     <li key={id} className="mr-[10px] w-[90%] mx-auto mb-[20px]">
@@ -34,7 +57,10 @@ const ProductItem = (props) => {
             <FaPlus />
           </button>
         </div>
-        <button className="w-full text-center bg-blue-500 text-white rounded cursor-pointer h-[40px]">
+        <button
+          onClick={addProductToCart}
+          className="w-full text-center bg-blue-500 text-white rounded cursor-pointer h-[40px]"
+        >
           Add to Cart
         </button>
       </div>
