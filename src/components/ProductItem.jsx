@@ -26,7 +26,6 @@ const ProductItem = (props) => {
 
     const resposne = await fetch(url, options);
     const data = await resposne.json();
-    console.log(data);
   };
 
   return (
