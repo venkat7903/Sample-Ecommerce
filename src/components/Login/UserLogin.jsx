@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { Redirect } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 
 const UserLogin = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [subMsg, setSubMsg] = useState("");
   const [showErrorMsg, setShowErrorMsg] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const jwtToken = Cookies.get("jwt_token");
 
   if (jwtToken !== undefined) {
@@ -22,6 +23,7 @@ const UserLogin = (props) => {
   };
 
   const submitForm = async (event) => {
+    setIsLoading(true);
     event.preventDefault();
     const userDetails = { username, password };
     const options = {
@@ -41,6 +43,7 @@ const UserLogin = (props) => {
       setSubMsg(data.message);
       setShowErrorMsg(true);
     }
+    setIsLoading(false);
   };
 
   const renderForm = () => (
@@ -80,7 +83,13 @@ const UserLogin = (props) => {
         />
       </div>
       <button className="w-full mt-[10px] bg-blue-600 text-white h-[40px] rounded cursor-pointer">
-        Login
+        {isLoading ? (
+          <div className="w-full flex items-center justify-center font-bold">
+            <Oval color="#fff" width={30} height={25} />
+          </div>
+        ) : (
+          "Login"
+        )}
       </button>
       {showErrorMsg && (
         <p className="text-red-600 text-[16px] mt-[5px]">*{subMsg}</p>

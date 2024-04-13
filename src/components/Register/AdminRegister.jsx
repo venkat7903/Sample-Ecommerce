@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Oval } from "react-loader-spinner";
 import { withRouter } from "react-router-dom";
 
 const AdminRegister = (props) => {
@@ -8,10 +9,12 @@ const AdminRegister = (props) => {
   const [isRegistered, setIsRegistered] = useState(false);
   const [subMsg, setSubMsg] = useState("");
   const [showErrorMsg, setShowErrorMsg] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   console.log(props);
 
   const submitForm = async (event) => {
+    setIsLoading(true);
     event.preventDefault();
     const userDetails = { username, name, password };
     const options = {
@@ -33,6 +36,7 @@ const AdminRegister = (props) => {
       setIsRegistered(false);
       setShowErrorMsg(true);
     }
+    setIsLoading(false);
   };
 
   const clickLogin = () => {
@@ -113,7 +117,13 @@ const AdminRegister = (props) => {
         />
       </div>
       <button className="w-full mt-[10px] bg-blue-600 text-white h-[40px] rounded cursor-pointer">
-        Register
+        {isLoading ? (
+          <div className="w-full flex items-center justify-center font-bold">
+            <Oval color="#fff" width={30} height={25} />
+          </div>
+        ) : (
+          "Register"
+        )}
       </button>
       {showErrorMsg && (
         <p className="text-red-600 text-[16px] mt-[5px]">*{subMsg}</p>
