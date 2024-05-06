@@ -18,7 +18,7 @@ const UserLogin = (props) => {
   const onLoginSuccess = (data) => {
     const { jwtToken } = data;
     const { history } = props;
-    Cookies.set("jwt_token", jwtToken, { expires: 10 });
+    Cookies.set("jwt_token", jwtToken, { expires: 30 });
     history.replace("/");
   };
 

@@ -81,7 +81,7 @@ const Products = () => {
             value={searchText}
             onChange={(event) => setSearchText(event.target.value)}
             placeholder="Search Products"
-            className="border border-black h-[30px] px-[10px] outline-none"
+            className="w-full md:w-[300px] border border-black h-[40px] px-[10px] outline-none"
           />
           <div className="mt-[20px] flex">
             <select
@@ -111,7 +111,7 @@ const Products = () => {
         {isLoading ? (
           renderLoader()
         ) : (
-          <ul className="grid grid-cols-2 md:grid-cols-3 mt-[30px]">
+          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-[30px]">
             {products.map((each) => {
               return <ProductItem key={each.id} productDetails={each} />;
             })}

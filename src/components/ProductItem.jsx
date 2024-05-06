@@ -1,6 +1,8 @@
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductItem = (props) => {
   const { productDetails } = props;
@@ -14,6 +16,8 @@ const ProductItem = (props) => {
       productId: id,
       productName,
       quantity,
+      imageUrl,
+      price,
     };
     const options = {
       method: "POST",
@@ -26,14 +30,22 @@ const ProductItem = (props) => {
 
     const resposne = await fetch(url, options);
     const data = await resposne.json();
+    console.log(data);
+    toast(data.message);
   };
 
   return (
     <li key={id} className="mr-[10px] w-[90%] mx-auto mb-[20px]">
-      <img src={imageUrl} alt={productName} className="w-full h-[200px]" />
+      <img
+        src={imageUrl}
+        alt={productName}
+        className="w-full h-[200px] md:h-[250px]"
+      />
       <div className="flex justify-between">
-        <p className="text-[20px] capitalize">{productName}</p>
-        <p>{price}/-</p>
+        <p className="text-[20px] md:text-[25px] capitalize font-semibold">
+          {productName}
+        </p>
+        <p className="text-[20px] md:text-[25px] font-semibold">{price}/-</p>
       </div>
       <div className="flex items-stretch">
         <div className="flex items-center mr-[10px]">
@@ -62,6 +74,7 @@ const ProductItem = (props) => {
         >
           Add to Cart
         </button>
+        <ToastContainer />
       </div>
     </li>
   );

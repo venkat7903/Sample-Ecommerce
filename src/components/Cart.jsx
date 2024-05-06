@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import CartItem from "./CartItem";
 import Navbar from "./Navbar";
 import { ThreeDots } from "react-loader-spinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Cart = () => {
+const Cart = (props) => {
   const [cartList, setCartList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const totalCost = cartList.reduce((a, b) => a + b.price * b.quantity, 0);
   useEffect(() => {
     getCartProducts();
   }, []);
@@ -30,6 +32,8 @@ const Cart = () => {
       productId: each.product_id,
       productName: each.product_name,
       quantity: each.quantity,
+      imageUrl: each.image_url,
+      price: each.price,
     }));
     setCartList(formattedData);
     setIsLoading(false);
@@ -47,6 +51,7 @@ const Cart = () => {
     const response = await fetch(url, options);
     const data = await response.json();
     getCartProducts();
+    toast(data.message);
   };
 
   const updateItemQuantity = async (quantity, id) => {
@@ -67,10 +72,34 @@ const Cart = () => {
     getCartProducts();
   };
 
+  const onShopNow = () => {
+    const { history } = props;
+    history.replace("/products");
+  };
+
+  const emptyView = () => {
+    return (
+      <div className="h-full w-full flex items-center justify-center flex-col flex-1 mt-[60px]">
+        <img
+          className="w-[50%] max-w-[300px]"
+          src="https://uxwing.com/wp-content/themes/uxwing/download/e-commerce-currency-shopping/cart-line-icon.png"
+          alt="empty cart"
+        />
+        <p className="font-bold text-[30px] mt-[20px]">Your Cart is Empty</p>
+        <button
+          onClick={onShopNow}
+          className="bg-blue-600 p-[10px] text-white rounded mt-[15px]"
+        >
+          Shop Now
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div>
       <Navbar />
-      <div className="w-[90%] mx-auto">
+      <div className="w-[90%] mx-auto mt-[26px]">
         <h1 className="text-4xl font-bold flex items-center">
           Your Cart{" "}
           <span className="ml-[10px] p-[15px] text-[20px] text-red-600 border border-black rounded-full h-[25px] w-[25px] font-normal flex items-center justify-center">
@@ -82,18 +111,33 @@ const Cart = () => {
             <ThreeDots color="#000" />
           </div>
         ) : (
-          <ul className="mt-[20px]">
-            {cartList.map((each) => (
-              <CartItem
-                key={`cartItem ${each.id}`}
-                itemDetails={each}
-                deleteProduct={deleteProduct}
-                updateItemQuantity={updateItemQuantity}
-              />
-            ))}
-          </ul>
+          <div className="flex flex-col h-full">
+            {cartList.length === 0 ? (
+              emptyView()
+            ) : (
+              <div className="flex flex-col">
+                <ul className="mt-[20px] flex-1">
+                  {cartList.map((each) => (
+                    <CartItem
+                      key={`cartItem ${each.id}`}
+                      itemDetails={each}
+                      deleteProduct={deleteProduct}
+                      updateItemQuantity={updateItemQuantity}
+                    />
+                  ))}
+                </ul>
+                <p className="text-[30px] font-semibold mb-[10px] text-right">
+                  Order Total: Rs {totalCost}/-
+                </p>
+                <button className="bg-blue-600 p-[15px] w-full rounded text-white md:self-end md:w-[200px]">
+                  Checkout
+                </button>
+              </div>
+            )}
+          </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

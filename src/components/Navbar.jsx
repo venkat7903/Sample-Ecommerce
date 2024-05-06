@@ -83,7 +83,7 @@ const Navbar = (props) => {
                     key={id}
                     className="ml-[20px] flex items-center hover:scale-105 duration-300 hover:text-indigo-600"
                   >
-                    <a href={href} className="text-[20px]">
+                    <a href={href} className="text-[20px] text-center">
                       {title}
                     </a>
                   </li>
@@ -116,7 +116,7 @@ const Navbar = (props) => {
                             key={id}
                             className="mt-[25px] text-white hover:scale-105 duration-300 hover:text-indigo-600"
                           >
-                            <a href={href} className="text-[30px]">
+                            <a href={href} className="text-[30px] text-center">
                               {title}
                             </a>
                           </li>

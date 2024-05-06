@@ -12,6 +12,10 @@ import AdminLogin from "./components/Login/AdminLogin";
 import UserLogin from "./components/Login/UserLogin";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
+import ModifyProducts from "./components/ModifyProducts";
+import AddProducts from "./components/AddProducts";
+import UpdateProducts from "./components/UpdateProducts";
+import DeleteProducts from "./components/DeleteProducts";
 
 function App() {
   return (
@@ -25,6 +29,22 @@ function App() {
       <ProtectedRoute exact path="/" component={Home} />
       <ProtectedRoute exact path="/products" component={Products} />
       <ProtectedRoute exact path="/cart" component={Cart} />
+      <ProtectedRoute
+        exact
+        path="/modify-products"
+        component={ModifyProducts}
+      />
+      <ProtectedRoute exact path="/add-products" component={AddProducts} />
+      <ProtectedRoute
+        exact
+        path="/update-products"
+        component={UpdateProducts}
+      />
+      <ProtectedRoute
+        exact
+        path="/delete-products"
+        component={DeleteProducts}
+      />
       <Route exact path="/not-found" component={NotFound} />
       <Redirect to="/not-found" />
     </Switch>
