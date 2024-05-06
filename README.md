@@ -58,6 +58,6 @@ Used React for enhanced interactivity and design the UI. The website is responsi
 **Admin Panel:**
 Created an admin panel for managing products and facilitates navigation and functionality for easy administration.
 
-Deployment:
+**Deployment**:
 Hosted the website on **Netlify** platform.
 
