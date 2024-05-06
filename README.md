@@ -34,6 +34,8 @@ Functional components and React Hooks for state management
 
 Tailwind CSS
 
+Cookies to store JWT Tokens
+
 # React Packages Used
 
 **react-icons** for icons
