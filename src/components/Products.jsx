@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import Cookies from "js-cookie";
 import { ThreeDots } from "react-loader-spinner";
 import ProductItem from "./ProductItem";
+import { ToastContainer } from "react-toastify";
 
 const orderByCriteria = [
   {
@@ -118,6 +119,7 @@ const Products = () => {
           </ul>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -99,7 +99,7 @@ const Cart = (props) => {
   return (
     <div>
       <Navbar />
-      <div className="w-[90%] mx-auto mt-[26px]">
+      <div className="w-[90%] mx-auto mt-[26px] pb-[20px]">
         <h1 className="text-4xl font-bold flex items-center">
           Your Cart{" "}
           <span className="ml-[10px] p-[15px] text-[20px] text-red-600 border border-black rounded-full h-[25px] w-[25px] font-normal flex items-center justify-center">

@@ -37,6 +37,7 @@ const UpdateProducts = () => {
     setProductName("");
     setImageUrl("");
     setProductPrice("");
+    setProductId("");
     toast(data.message);
   };
 

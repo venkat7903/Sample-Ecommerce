@@ -54,12 +54,6 @@ const Navbar = (props) => {
       href: "/cart",
       isVisible: true,
     },
-    {
-      id: uuidv4(),
-      title: "Profile",
-      href: "/profile",
-      isVisible: true,
-    },
   ];
 
   const clickLogout = () => {

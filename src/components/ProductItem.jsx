@@ -1,15 +1,20 @@
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
+import { Tooltip } from "react-tooltip";
+import { Oval } from "react-loader-spinner";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ProductItem = (props) => {
   const { productDetails } = props;
   const { id, productName, imageUrl, price } = productDetails;
   const [quantity, setQuantity] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   const addProductToCart = async () => {
+    console.log("Hi");
+    setIsLoading(true);
     const jwtToken = Cookies.get("jwt_token");
     const url = "https://sample-api-jv77.onrender.com/cart";
     const productData = {
@@ -32,15 +37,24 @@ const ProductItem = (props) => {
     const data = await resposne.json();
     console.log(data);
     toast(data.message);
+    setIsLoading(false);
   };
 
   return (
     <li key={id} className="mr-[10px] w-[90%] mx-auto mb-[20px]">
-      <img
-        src={imageUrl}
-        alt={productName}
-        className="w-full h-[200px] md:h-[250px]"
-      />
+      <div
+        data-tooltip-id={`tooltip ${id}`}
+        data-tooltip-content={`productId ${id}`}
+        data-tooltip-place="top"
+      >
+        <Tooltip id={`tooltip ${id}`} />
+        <img
+          src={imageUrl}
+          alt={productName}
+          className="w-full h-[200px] md:h-[250px]"
+        />
+      </div>
+
       <div className="flex justify-between">
         <p className="text-[20px] md:text-[25px] capitalize font-semibold">
           {productName}
@@ -70,11 +84,16 @@ const ProductItem = (props) => {
         </div>
         <button
           onClick={addProductToCart}
-          className="w-full text-center bg-blue-500 text-white rounded cursor-pointer h-[40px]"
+          className="flex items-center justify-center w-full text-center bg-blue-500 text-white rounded cursor-pointer h-[40px]"
         >
-          Add to Cart
+          {isLoading ? (
+            <div>
+              <Oval color="#fff" width={30} height={30} />
+            </div>
+          ) : (
+            "Add to Cart"
+          )}
         </button>
-        <ToastContainer />
       </div>
     </li>
   );
