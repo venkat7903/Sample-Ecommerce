@@ -49,3 +49,13 @@ Tailwind CSS
 **react-tooltip** to display tooltips
 
 **uuid** for unique ids
+
+# Description 
+
+**Frontend Development:**
+Used React for enhanced interactivity and design the UI. The website is responsive and provides a seamless experience on various devices and screen sizes.
+
+**Admin Panel:**
+Created an admin panel for managing products and facilitates navigation and functionality for easy administration.
+
+
