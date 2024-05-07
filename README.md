@@ -17,12 +17,21 @@ The server will start running at localhost:3000
 
 # Assignment Video
 
+https://github.com/venkat7903/react-router/assets/138805603/3a016df4-1aa7-4550-8659-4f9e4d10efe0
+
+# Youtube Video Link
+
+https://youtu.be/3XofRCLjy2g
+
 # Project Live Link
 https://shopnowecom.netlify.app/
 
 # Admin Panel
 
 We can add, update, delete products through admin panel. To access admin portal, you must Register and Login using **Admin**. 
+
+https://github.com/venkat7903/react-router/assets/138805603/5d7abb6c-0b84-486a-8c30-1d9781ae1ac2
+
 
 # Technologies Used
 
