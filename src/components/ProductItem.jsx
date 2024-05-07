@@ -10,10 +10,10 @@ const ProductItem = (props) => {
   const { productDetails } = props;
   const { id, productName, imageUrl, price } = productDetails;
   const [quantity, setQuantity] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Used React Loader to make loader visible 
 
+  // ADD products to Cart
   const addProductToCart = async () => {
-    console.log("Hi");
     setIsLoading(true);
     const jwtToken = Cookies.get("jwt_token");
     const url = "https://sample-api-jv77.onrender.com/cart";
