@@ -41,7 +41,7 @@ const Cart = (props) => {
 
   const deleteProduct = async (id) => {
     const jwtToken = Cookies.get("jwt_token");
-    const url = `https://sample-api-jv77.onrender.com/cart/${id}/`;
+    const url = `https://sample-api.up.railway.app/${id}/`;
     const options = {
       method: "DELETE",
       headers: {
@@ -56,7 +56,7 @@ const Cart = (props) => {
 
   const updateItemQuantity = async (quantity, id) => {
     const jwtToken = Cookies.get("jwt_token");
-    const url = `https://sample-api-jv77.onrender.com/cart/${id}/`;
+    const url = `https://sample-api.up.railway.app/cart/${id}/`;
     const updateItems = { quantity };
     const options = {
       method: "PUT",
