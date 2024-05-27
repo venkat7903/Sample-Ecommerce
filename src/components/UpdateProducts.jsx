@@ -21,7 +21,7 @@ const UpdateProducts = () => {
       imageUrl,
       price: productPrice,
     };
-    const url = `https://sample-api-jv77.onrender.com/products/${productId}`;
+    const url = `https://sample-api.up.railway.app/products/${productId}`;
     const options = {
       method: "PUT",
       headers: {

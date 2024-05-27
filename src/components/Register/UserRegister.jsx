@@ -22,7 +22,7 @@ const UserRegister = (props) => {
       },
       body: JSON.stringify(userDetails),
     };
-    const url = "https://sample-api-jv77.onrender.com/register";
+    const url = "https://sample-api.up.railway.app/register";
     const response = await fetch(url, options);
     const data = await response.json();
 

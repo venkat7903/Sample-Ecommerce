@@ -17,7 +17,7 @@ const Cart = (props) => {
   const getCartProducts = async () => {
     setIsLoading(true);
     const jwtToken = Cookies.get("jwt_token");
-    const url = "https://sample-api-jv77.onrender.com/cart";
+    const url = "https://sample-api.up.railway.app/cart";
     const options = {
       method: "GET",
       headers: {

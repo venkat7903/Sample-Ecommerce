@@ -19,7 +19,7 @@ const AddProducts = () => {
       imageUrl,
       price: productPrice,
     };
-    const url = "https://sample-api-jv77.onrender.com/products/";
+    const url = "https://sample-api.up.railway.app/products/";
     const options = {
       method: "POST",
       headers: {

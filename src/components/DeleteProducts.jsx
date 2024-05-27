@@ -12,7 +12,7 @@ const DeleteProducts = () => {
     event.preventDefault();
     setIsLoading(true);
     const jwtToken = Cookies.get("jwt_token");
-    const url = `https://sample-api-jv77.onrender.com/products/${productId}`;
+    const url = `https://sample-api.up.railway.app/products/${productId}`;
     const options = {
       method: "DELETE",
       headers: {

@@ -11,7 +11,7 @@ const Navbar = (props) => {
 
   useEffect(() => {
     const getUserDetails = async () => {
-      const url = "https://sample-api-jv77.onrender.com/user-profile";
+      const url = "https://sample-api.up.railway.app/user-profile";
       const jwtToken = Cookies.get("jwt_token");
       const options = {
         method: "GET",

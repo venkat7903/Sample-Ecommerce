@@ -35,7 +35,7 @@ const AdminLogin = (props) => {
       },
       body: JSON.stringify(userDetails),
     };
-    const url = "https://sample-api-jv77.onrender.com/admin/login";
+    const url = "https://sample-api.up.railway.app/admin/login";
     const response = await fetch(url, options);
     const data = await response.json();
 

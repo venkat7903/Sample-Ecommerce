@@ -43,7 +43,7 @@ const Products = () => {
   const getProducts = async () => {
     setIsLoading(true);
     const jwtToken = Cookies.get("jwt_token");
-    const url = `https://sample-api-jv77.onrender.com/products?search_q=${searchText}&orderBy=${orderBy}&order=${orderType}`;
+    const url = `https://sample-api.up.railway.app/products?search_q=${searchText}&orderBy=${orderBy}&order=${orderType}`;
     const options = {
       method: "GET",
       headers: {
